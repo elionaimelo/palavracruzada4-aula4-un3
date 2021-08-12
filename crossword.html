@@ -1,0 +1,103 @@
+<html !doctype>
+  <head>
+    <meta charset="utf-8" />
+    <title>Exercício - Palavras Cruzadas</title>
+    <link href="crossword.css" rel="stylesheet" type="text/css" />
+    <script src="jquery-1.11.3.min.js"></script>
+    <script src="crossword.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <p><strong>Exercício - Palavras cruzadas</strong></p>
+      <p></p>
+
+      <p>Você é bom/boa em palavras cruzadas?</p>
+      <p>
+        Clique nos números para visualizar a pergunta e em seguida digite a
+        resposta para completar a palavra cruzada. Não use acentos nas palavras
+        se forem acentuadas, nem coloque espaço entre elas.
+      </p>
+
+      <div id="divTest"></div>
+
+      <script>
+        var str1 = "Longitudinalidade";
+        var res1 = [];
+        var cont1 = 0;
+
+        $("#target1").click(function () {
+          $("#dica1").append(function (value) {
+            return (res1[cont1] = str1.charAt(cont1));
+          });
+          cont1++;
+        });
+
+        var str2 = "Familia";
+        var res2 = [];
+        var cont2 = 0;
+
+        $("#target2").click(function () {
+          $("#dica2").append(function (value) {
+            return (res2[cont2] = str2.charAt(cont2));
+          });
+          cont2++;
+        });
+
+        var str3 = "Responsabilidade";
+        var res3 = [];
+        var cont3 = 0;
+
+        $("#target3").click(function () {
+          $("#dica3").append(function (value) {
+            return (res3[cont3] = str3.charAt(cont3));
+          });
+          cont3++;
+        });
+
+        // letras - grid//
+
+        $(function () {
+          var grid = [
+            "@@@@@@@@@@@@@@@@@@@@@@@@@@@@",
+            "@@@@@@@@@@@@ @@@@@@@@@@@@@@@",
+            "@@@@@@@@@@@@ @@@@@@@@@@@@@@@",
+            "@@@ @@@@@@@@ @@@@@@@ @@@@@@@",
+            "@@@ @@@@@@           @@@@@@@",
+            "@@@ @@@@@@@@ @@@@@@@ @@@@@@@",
+            "@@@ @@@@@@@@ @@@@@@@ @@@@@@@",
+            "@@@           @@@@@@ @@@@@@@",
+            "@@@ @@@@@@@@ @@@@@@@ @@@@@@@",
+            "@@@ @@@@@@@@ @@@@@@       @@",
+            "@@@ @@@@@@@@ @@@@@@@ @@@@@@@",
+            "@@@ @@@@@@@@ @@@@@@@ @@@@@@@",
+            "@@@ @@@@@@@@ @@@@@@@ @@@@@@@",
+            "@@@@@@@@@@@@@@@@@@@@ @@@@@@@",
+          ];
+          var acrossClues = [
+            "REAÇÃO ADVERSA COMUM AO SURFACTANTE.%%bradicardia",
+            "PRINCIPAL CAUSA DA SÍNDROME DO DESCONFORTO RESPIRATÓRIO:.%%surfactante",
+            "METILXANTINA DE EFEITOS ADVERSOS MENOS INTENSOS.%%cafeina",
+            
+          ];
+
+          var downClues = [
+            
+            "MEDICAMENTO DE ESCOLHA DO PROTOCOLO DART PARA BRONCODISPLASIA.%%dexametasona",
+            "DIURÉTICO DE ESCOLHA PARA REDUZIR O TRABALHO RESPIRATÓRIO PROVOCADO POR EDEMA PULMONAR. %%furosemida",
+            "REAÇÃO ADVERSA COMUM AOS BRONCODILATADORES. %%taquicardia",
+
+            /* VERTICAL 1 */
+          ];
+
+          $("#divTest").crossword({
+            gridMask: grid,
+            acrossClues: acrossClues,
+            downClues: downClues,
+            cluesToRight: true,
+            validateAnswer: "clue",
+          });
+        });
+      </script>
+    </div>
+  </body>
+</html>
